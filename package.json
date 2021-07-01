@@ -1,0 +1,24 @@
+{
+  "name": "themoviedatabase",
+  "version": "1.0.0",
+  "description": "The Jumbo Movie Database Wordpress Theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damoGit/themoviedatabase.git"
+  },
+  "keywords": [
+    "Responsive",
+    "Movie",
+    "Database"
+  ],
+  "author": "Damien Sakora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damoGit/themoviedatabase/issues"
+  },
+  "homepage": "https://github.com/damoGit/themoviedatabase#readme"
+}
