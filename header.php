@@ -13,9 +13,10 @@
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
 
-<body>
-
-<header class="tmdb_header">
-	<h1>HEADER</h1>
-</header><!-- tmdb_header -->
-<div class="tmdb_container">
+<body <?php body_class(); ?>>
+	
+	<header class="tmdb_header">
+		<h1>HEADER</h1>
+	</header><!-- tmdb_header -->
+	
+	<div class="tmdb_container">
