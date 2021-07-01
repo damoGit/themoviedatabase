@@ -1,0 +1,99 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+@import 'normalize';
+
+/* Theme Colours */
+/* ========================================================================== */
+
+$tmdb_maxwidth: 1000px;
+
+$tmdb_colourdarkblue: #081B23;
+$tmdb_colourgreen: #01D277;
+$tmdb_colourpurple: #4902A3;
+$tmdb_colourtext1: #E3F4FC;
+$tmdb_colourtext2: #E5F7FF;
+$tmdb_colourtext3: #A1D1E5;
+$tmdb_colourtext3: #9FBBC7;
+
+$tmdb_fontbody: 'Roboto', sans-serif;
+$tmdb_fontheadings: 'Montserrat', sans-serif;
+
+/* Theme Layout */
+/* ========================================================================== */
+
+body{
+	background: $tmdb_colourdarkblue;
+}
+
+.tmdb_wrapper{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	
+	header,
+	footer,
+	>div,{
+		width: 100%;
+		
+		>div{
+			max-width: $tmdb_maxwidth;
+			margin: 0 auto;
+		}
+		
+	}
+	
+	.tmdb_header{
+		
+	}
+	
+	.tmdb_container{
+		flex-grow: 1;		
+	}
+	
+	.tmdb_footer{
+		
+	}
+		
+}
+
+/* Typography */
+/* ========================================================================== */
+
+body{
+	font-family: $tmdb_fontbody;
+	color: $tmdb_colourtext3;
+}
+
+h1,h2,h3,h4{
+	font-family: $tmdb_fontheadings;
+	color: $tmdb_colourtext1;
+}
+
+/* Header */
+/* ========================================================================== */
+
+.tmdb_header{
+	background: radial-gradient(82.98% 213.08% at 53.46% -21.35%, rgba(5, 112, 172, 0.46) 0%, rgba(8, 27, 35, 0) 100%);
+	
+	.logo{
+		
+	}
+	
+}
+
+/* Container */
+/* ========================================================================== */
+
+.tmdb_container{	
+	
+}
+
+/* Footer */
+/* ========================================================================== */
+
+.tmdb_footer{
+
+}

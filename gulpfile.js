@@ -7,15 +7,15 @@ const browsersync = require('browser-sync').create();
 
 // Sass Task
 function scssTask(){
-  return src('source/sass/style.scss', { sourcemaps: false })
+  return src('source/sass/tmdb_style.scss', { sourcemaps: false })
       .pipe(sass())
       //.pipe(postcss([cssnano()]))
-      .pipe(dest('.', { sourcemaps: '.' }));
+      .pipe(dest('assets/css', { sourcemaps: '.' }));
 }
 
 // JavaScript Task
 function jsTask(){
-  return src('source/js/script.js', { sourcemaps: false })
+  return src('source/js/*.js', { sourcemaps: false })
     .pipe(terser())
     .pipe(dest('assets/js', { sourcemaps: '.' }));
 }
