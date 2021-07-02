@@ -13,25 +13,51 @@ $tmdb_colourpurple: #4902A3;
 $tmdb_colourtext1: #E3F4FC;
 $tmdb_colourtext2: #E5F7FF;
 $tmdb_colourtext3: #A1D1E5;
-$tmdb_colourtext3: #9FBBC7;
+$tmdb_colourtext4: #9FBBC7;
 
 $tmdb_fontbody: 'Roboto', sans-serif;
 $tmdb_fontheadings: 'Montserrat', sans-serif;
 
+/* Mixins */
+/* ========================================================================== */
+
+@mixin radial-gradient($from, $to){
+	background: -moz-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $from), color-stop(100%, $to));
+	background: -webkit-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -o-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: -ms-radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background: radial-gradient(center, circle cover, $from 0%, $to 100%);
+	background-color: $from;
+}
+
 /* Theme Layout */
 /* ========================================================================== */
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html{
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after{
+	box-sizing: inherit;
+}
+
 body{
-	background: $tmdb_colourdarkblue;
+	background: $tmdb_colourdarkblue url("../images/Rectangle.png") 50% 0 no-repeat;
 }
 
 .tmdb_wrapper{
+	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
+	//text-align: center;
+	overflow: hidden;
 	
 	header,
 	footer,
@@ -39,7 +65,8 @@ body{
 		width: 100%;
 		
 		>div{
-			max-width: $tmdb_maxwidth;
+			width: $tmdb_maxwidth;
+			max-width: 100%;
 			margin: 0 auto;
 		}
 		
@@ -72,13 +99,81 @@ h1,h2,h3,h4{
 	color: $tmdb_colourtext1;
 }
 
+h2{
+	font-size: 20px;
+}
+
 /* Header */
 /* ========================================================================== */
 
 .tmdb_header{
-	background: radial-gradient(82.98% 213.08% at 53.46% -21.35%, rgba(5, 112, 172, 0.46) 0%, rgba(8, 27, 35, 0) 100%);
+	width: 100%;
+	position: relative;
 	
 	.logo{
+		margin: 60px auto;
+		display: block;	
+	}
+	
+	$lines_width: 405px;
+	.lines{
+		position: absolute;
+		top: -100px;
+		left: 50%;
+		margin-left: -$lines_width/2;
+	}
+	
+	.my-ajax-filter-search{
+		width: 342px;
+		max-width: 100%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+		
+		$search_textinputheight: 44px;
+		input[type=text]{
+			width: 100%;
+			height: 44px;
+			padding-left: 20px;
+			padding-right: 20px;
+			border: none;
+			border-radius: 22px;
+			
+			&:focus{
+				outline: none;
+			}
+			
+		}
+		
+		$search_submitwidthheight: $search_textinputheight;
+		input[type=submit]{
+			width: $search_submitwidthheight;
+			height: $search_submitwidthheight;
+			position: absolute;
+			top: 0;
+			right: 0;
+			cursor: pointer;
+			border: none;
+			border-radius: 22px;	
+			background: transparent url("../images/search.png") 50% 50% no-repeat;
+			background-size: 16px;
+		}
+		
+		::-webkit-input-placeholder { /* Edge */
+			@extend .placeholder;
+		}
+		
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			@extend .placeholder;
+		}
+		
+		::placeholder {
+			@extend .placeholder;
+		}
+		
+		.placeholder{
+			color: $tmdb_colourgreen;	
+		}
 		
 	}
 	
@@ -88,6 +183,26 @@ h1,h2,h3,h4{
 /* ========================================================================== */
 
 .tmdb_container{	
+	padding: 0 16px;	
+}
+
+/* Popular Movies */
+/* ========================================================================== */
+
+.popular_movies{
+	cursor: pointer;
+	
+	>div{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	
+		.tmdb_post{
+			@extend .movie_preview;
+		}
+	
+	}
 	
 }
 
@@ -96,4 +211,47 @@ h1,h2,h3,h4{
 
 .tmdb_footer{
 
+}
+
+.movie_preview{
+	width: 155px;
+	margin: 5px 10px;
+	position: relative;	
+	
+	.score{
+		width: 40px;
+		padding: 4px 0 3px 0;
+		display: block;
+		position: absolute;	
+		top: 4px;
+		left: 4px;
+		z-index: 1;
+		font-size: 12px;
+		font-weight: bold;
+		text-align: center;
+		color: #fff;
+		border-radius: 8px;
+		background: $tmdb_colourgreen;
+	}
+	
+	img{
+		position: relative;
+		top: -5px;
+		left: -9px;
+	}
+	
+	p{
+		margin: 0 0;
+		font-size: 14px;
+		text-align: left;
+		color: $tmdb_colourtext2;
+		
+		small{
+			padding-top: 5px;
+			font-size: 12px;
+			color: $tmdb_colourtext3;
+			display: block;
+		}
+		
+	}
 }

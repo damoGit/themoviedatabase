@@ -42,27 +42,6 @@ mafsForm.submit(function(e){
 				var html  = '<li class="no-result">No matching movies found. Try a different filter or search keyword</li>';
 	            mafs.find('.ajax_filter_search_results').append(html);     
 		     }
-	/*
-	        if(response) {
-		        console.log(response);
-	            for(var i = 0 ;  i < response.length ; i++) {
-	                 var html  = "<li id='movie-" + response[i].id + "'>";
-	                     html += "  <a href='" + response[i].permalink + "' title='" + response[i].title + "'>";
-	                     html += "      <img src='" + response[i].movie_cover + "' alt='" + response[i].title + "' />";
-	                     html += "      <div class='movie-info'>";
-	                     html += "          <h4>" + response[i].title + "</h4>";
-	                     html += "          <p>Year: " + response[i].movie_year + "</p>";
-	                     html += "          <p>Score: " + response[i].movie_score + "</p>";
-	                     html += "      </div>";
-	                     html += "  </a>";
-	                     html += "</li>";
-	                 mafs.find(".ajax_filter_search_results").append(html);
-	            }
-	        } else {
-	            var html  = '<li class="no-result">No matching movies found. Try a different filter or search keyword</li>';
-	            mafs.find('.ajax_filter_search_results').append(html);
-	        }
-	*/
 	    },
 	    error: function(xhr){
 	      var html  = '<li class="no-result">No matching movies found. Try a different filter or search keyword</li>';
@@ -71,4 +50,9 @@ mafsForm.submit(function(e){
 	    
 	});
 	
+});
+
+$('.popular_movies .tmdb_post').click(function(){
+	var url = $(this).attr('data-link');
+	$(window).attr('location',url);
 });

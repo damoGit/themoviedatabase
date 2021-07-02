@@ -49,10 +49,10 @@
 		my_ajax_filter_search_scripts();
 	    ob_start(); ?>
 	 
-		    <div id="my-ajax-filter-search">
+		    <div id="my-ajax-filter-search" class="my-ajax-filter-search">
 		        <form action="" method="get">
-		            <input type="text" name="search" id="search" value="" placeholder="Search Here..">
-		            <input type="submit" id="submit" name="submit" value="Search">
+		            <input type="text" name="search" id="search" value="" placeholder="Search">
+		            <input type="submit" id="submit" name="submit" value="">
 		        </form>
 		        <ul id="ajax_filter_search_results" class="ajax_filter_search_results"></ul>
 		    </div>
