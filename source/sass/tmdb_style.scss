@@ -38,6 +38,16 @@ $tmdb_fontheadings: 'Montserrat', sans-serif;
 	background-color: $from;
 }
 
+@mixin placeholder{
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}  
+}
+
+/* Media Queries */
+/* ========================================================================== */
+
 // Extra small devices (phones, 600px and down)
 @media only screen and (max-width: $tmdb_phonebreak){}
 // Small devices (portrait tablets and large phones, 600px and up)
@@ -149,6 +159,12 @@ h2{
 			border: none;
 			border-radius: 22px;
 			
+			@include placeholder{
+		        color: $tmdb_colourgreen;
+		        font-family: $tmdb_fontbody;
+		        font-size: 14px;
+		    }
+		   
 			&:focus{
 				outline: none;
 			}
@@ -169,25 +185,34 @@ h2{
 			background-size: 16px;
 		}
 		
+		.tmdb_placeholder{
+			color: $tmdb_colourgreen!important;	
+			font-size: 10px;
+		}
+		
 		::-webkit-input-placeholder { /* Edge */
-			@extend .placeholder;
+			@extend .tmdb_placeholder;
 		}
 		
 		:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			@extend .placeholder;
+			@extend .tmdb_placeholder;
 		}
 		
 		::placeholder {
-			@extend .placeholder;
+			@extend .tmdb_placeholder;
 		}
 		
-		.placeholder{
-			color: $tmdb_colourgreen;	
+		.tmdb_placeholder{
+			color: $tmdb_colourgreen!important;	
+			font-size: 10px;
 		}
 		
 	}
 	
 }
+
+/* Ajax Search */
+/* ========================================================================== */
 
 .ajax_filter_search_results{
 	width: 100%;
@@ -352,6 +377,3 @@ h2{
 		
 	}
 }
-
-/* Animation */
-/* ========================================================================== */

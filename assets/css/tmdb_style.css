@@ -308,6 +308,8 @@ template {
 /* ========================================================================== */
 /* Mixins */
 /* ========================================================================== */
+/* Media Queries */
+/* ========================================================================== */
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box; }
@@ -379,6 +381,22 @@ h2 {
       padding-right: 20px;
       border: none;
       border-radius: 22px; }
+      .tmdb_header .my-ajax-filter-search input[type=text]::-webkit-input-placeholder {
+        color: #01D277;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px; }
+      .tmdb_header .my-ajax-filter-search input[type=text]:-moz-placeholder {
+        color: #01D277;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px; }
+      .tmdb_header .my-ajax-filter-search input[type=text]::-moz-placeholder {
+        color: #01D277;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px; }
+      .tmdb_header .my-ajax-filter-search input[type=text]:-ms-input-placeholder {
+        color: #01D277;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px; }
       .tmdb_header .my-ajax-filter-search input[type=text]:focus {
         outline: none; }
     .tmdb_header .my-ajax-filter-search input[type=submit] {
@@ -392,13 +410,19 @@ h2 {
       border-radius: 22px;
       background: transparent url("../images/search.png") 50% 50% no-repeat;
       background-size: 16px; }
+    .tmdb_header .my-ajax-filter-search .tmdb_placeholder, .tmdb_header .my-ajax-filter-search ::-webkit-input-placeholder, .tmdb_header .my-ajax-filter-search :-ms-input-placeholder, .tmdb_header .my-ajax-filter-search ::placeholder {
+      color: #01D277 !important;
+      font-size: 10px; }
     .tmdb_header .my-ajax-filter-search ::-webkit-input-placeholder {
       /* Edge */ }
     .tmdb_header .my-ajax-filter-search :-ms-input-placeholder {
       /* Internet Explorer 10-11 */ }
-    .tmdb_header .my-ajax-filter-search .placeholder, .tmdb_header .my-ajax-filter-search ::-webkit-input-placeholder, .tmdb_header .my-ajax-filter-search :-ms-input-placeholder, .tmdb_header .my-ajax-filter-search ::placeholder {
-      color: #01D277; }
+    .tmdb_header .my-ajax-filter-search .tmdb_placeholder, .tmdb_header .my-ajax-filter-search ::-webkit-input-placeholder, .tmdb_header .my-ajax-filter-search :-ms-input-placeholder, .tmdb_header .my-ajax-filter-search ::placeholder {
+      color: #01D277 !important;
+      font-size: 10px; }
 
+/* Ajax Search */
+/* ========================================================================== */
 .ajax_filter_search_results {
   width: 100%;
   height: 100vh;
@@ -506,6 +530,3 @@ h2 {
       font-size: 12px;
       color: #A1D1E5;
       display: block; }
-
-/* Animation */
-/* ========================================================================== */
