@@ -156,6 +156,7 @@ h2{
 			height: 44px;
 			padding-left: 20px;
 			padding-right: 20px;
+			font-size: 14px;
 			border: none;
 			border-radius: 22px;
 			
@@ -183,28 +184,6 @@ h2{
 			border-radius: 22px;	
 			background: transparent url("../images/search.png") 50% 50% no-repeat;
 			background-size: 16px;
-		}
-		
-		.tmdb_placeholder{
-			color: $tmdb_colourgreen!important;	
-			font-size: 10px;
-		}
-		
-		::-webkit-input-placeholder { /* Edge */
-			@extend .tmdb_placeholder;
-		}
-		
-		:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			@extend .tmdb_placeholder;
-		}
-		
-		::placeholder {
-			@extend .tmdb_placeholder;
-		}
-		
-		.tmdb_placeholder{
-			color: $tmdb_colourgreen!important;	
-			font-size: 10px;
 		}
 		
 	}
