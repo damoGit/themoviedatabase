@@ -402,7 +402,7 @@ h2 {
 .ajax_filter_search_results {
   width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
@@ -410,7 +410,11 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  overflow: hidden; }
+  .ajax_filter_search_results h3 {
+    text-align: center;
+    margin: 20px 20px; }
   .ajax_filter_search_results .close {
     width: 25px;
     height: 25px;
@@ -419,12 +423,13 @@ h2 {
     top: 20px;
     right: 20px;
     z-index: 100;
-    cursor: pointer;
-    background: #fff; }
+    cursor: pointer; }
   .ajax_filter_search_results .results {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; }
   .ajax_filter_search_results .tmdb_post {
     margin: 5px 10px !important; }
 
@@ -460,10 +465,15 @@ h2 {
 
 /* Footer */
 /* ========================================================================== */
+/* Helper Classes */
+/* ========================================================================== */
 .movie_preview, .ajax_filter_search_results .tmdb_post, .popular_movies > div .tmdb_post {
   width: 155px;
   margin: 5px 5px;
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
+  .movie_preview:hover img, .ajax_filter_search_results .tmdb_post:hover img, .popular_movies > div .tmdb_post:hover img {
+    opacity: .5; }
   .movie_preview .score, .ajax_filter_search_results .tmdb_post .score, .popular_movies > div .tmdb_post .score {
     width: 40px;
     padding: 4px 0 3px 0;
@@ -478,6 +488,10 @@ h2 {
     color: #fff;
     border-radius: 8px;
     background: #01D277; }
+    .movie_preview .score.score_red, .ajax_filter_search_results .tmdb_post .score.score_red, .popular_movies > div .tmdb_post .score.score_red {
+      background: #D1225B; }
+    .movie_preview .score.score_purple, .ajax_filter_search_results .tmdb_post .score.score_purple, .popular_movies > div .tmdb_post .score.score_purple {
+      background: #4902A3; }
   .movie_preview img, .ajax_filter_search_results .tmdb_post img, .popular_movies > div .tmdb_post img {
     position: relative;
     top: -5px;
@@ -492,3 +506,6 @@ h2 {
       font-size: 12px;
       color: #A1D1E5;
       display: block; }
+
+/* Animation */
+/* ========================================================================== */

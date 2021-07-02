@@ -16,6 +16,7 @@ $tmdb_desktopbreak: $tmdb_maxwidth;
 $tmdb_colourdarkblue: #081B23;
 $tmdb_colourgreen: #01D277;
 $tmdb_colourpurple: #4902A3;
+$tmdb_colourred: #D1225B;
 $tmdb_colourtext1: #E3F4FC;
 $tmdb_colourtext2: #E5F7FF;
 $tmdb_colourtext3: #A1D1E5;
@@ -191,7 +192,7 @@ h2{
 .ajax_filter_search_results{
 	width: 100%;
 	height: 100vh;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 99;
@@ -200,6 +201,12 @@ h2{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	overflow: hidden;
+	
+	h3{
+		text-align: center;
+		margin: 20px 20px;
+	}
 	
 	.close{
 		width: 25px;
@@ -210,13 +217,14 @@ h2{
 		right: 20px;
 		z-index: 100;
 		cursor: pointer;
-		background: #fff;
 	}
 	
 	.results{
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
 	}
 	
 	.tmdb_post{
@@ -281,10 +289,22 @@ h2{
 
 }
 
+/* Helper Classes */
+/* ========================================================================== */
+
 .movie_preview{
 	width: 155px;
 	margin: 5px 5px;
 	position: relative;	
+	cursor: pointer;
+	
+	&:hover{
+		
+		img{
+			opacity: .5;
+		}
+		
+	}
 	
 	.score{
 		width: 40px;
@@ -300,6 +320,15 @@ h2{
 		color: #fff;
 		border-radius: 8px;
 		background: $tmdb_colourgreen;
+		
+		&.score_red{
+			background: $tmdb_colourred;	
+		}
+		
+		&.score_purple{
+			background: $tmdb_colourpurple;	
+		}
+		
 	}
 	
 	img{
@@ -323,3 +352,6 @@ h2{
 		
 	}
 }
+
+/* Animation */
+/* ========================================================================== */

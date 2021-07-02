@@ -10,7 +10,12 @@
 <body <?php body_class(); ?>>
 
 <div id="ajax_filter_search_results" class="ajax_filter_search_results" style="display:none;">
-	<span class="close"></span>
+	<span class="close">
+		<svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M20 5L18 3L4 20L6 22L20 5Z" fill="white"/>
+			<path d="M4 5L6 3L20 20L18 22L4 5Z" fill="white"/>
+		</svg>
+	</span>
 	<h3>Search Results</h3>
 	<div class="results">
 		Loading Results...

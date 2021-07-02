@@ -10,8 +10,8 @@ mafsForm.submit(function(e){
     
     console.log('form submitted');
  
-	if(mafsForm.find('#search').val().length !== 0) {
-	    var search = mafsForm.find('#search').val();
+	if($('#search').val().length !== 0){
+	    var search = $('#search').val();
 	}
 	
 	var data = {
@@ -19,39 +19,60 @@ mafsForm.submit(function(e){
 	    search : search
 	}
 	
-	$.ajax({
-	    url : ajax_url['ajax_url'],
-	    data : data,
-	    success : function(response) {
-	         if(response) {
-		      	//$('.ajax_filter_search_results h3').append('<h3>Search Results</h3>');
-		        for(var i = 0 ;  i < response.length ; i++) {
-	                var	html  = '<div class="tmdb_post" data-link="' + response[i].permalink + '">';
-	                 	html += '	<span class="score">' + response[i].movie_score + '</span>';
-	                    html += '	<img src="' + response[i].movie_cover['url'] + '" alt="' + response[i].title + '" />';
-	                    html += '	<p>' + response[i].title + '<small>' + response[i].movie_year + '</small></p>';
-	                    html += '<div>';
-	                $('.ajax_filter_search_results .results').append(html);
-	            }
-	            $('.ajax_filter_search_results').show();
-	            closeSearchResponse();
-		     }else{
+	if(search){
+		
+		$.ajax({
+		    url : ajax_url['ajax_url'],
+		    data : data,
+		    success : function(response){
+		         if(response){
+			      	$('.ajax_filter_search_results h3').html('<h3>Search Results for: ' + search + '</h3>');
+			        for(var i = 0 ;  i < response.length ; i++){
+				        var score = response[i].movie_score;
+				        if(score <= 30){
+							scoreColor = 'red';
+						}else if(score >= 31 && score <= 60){
+							scoreColor = 'purple';	
+						}else if(score >= 61 && score <= 100){
+							scoreColor = 'green';	
+						}
+		                var	html  = '<div class="tmdb_post" data-link="' + response[i].permalink + '">';
+		                 	html += '	<span class="score score_' + scoreColor + '">' + response[i].movie_score + '%</span>';
+		                    html += '	<img src="' + response[i].movie_cover['url'] + '" alt="' + response[i].title + '" />';
+		                    html += '	<p>' + response[i].title + '<small>' + response[i].movie_year + '</small></p>';
+		                    html += '<div>';
+		                $('.ajax_filter_search_results .results').append(html);
+		            }
+		            $('.ajax_filter_search_results').show();
+		            closeSearchResponse();
+		            dataLink('.ajax_filter_search_results .tmdb_post');
+		        }else{
+			        $('.ajax_filter_search_results h3').html('<h3>Search Results for: ' + search + '</h3>');
+					var html = '<p class="no-result">No matching movies found. Try a different search keyword</p>';
+		            $('.ajax_filter_search_results .results').append(html);
+		            $('.ajax_filter_search_results').show(); 
+		            closeSearchResponse();    
+			     }
+		    },
+		    error: function(xhr){
+			    $('.ajax_filter_search_results h3').html('<h3>Search Results for: ' + search + '</h3>');
 				var html = '<p class="no-result">No matching movies found. Try a different search keyword</p>';
 	            $('.ajax_filter_search_results .results').append(html);
 	            $('.ajax_filter_search_results').show(); 
-	            closeSearchResponse();    
-		     }
-	    },
-	    error: function(xhr){
-			var html = '<p class="no-result">No matching movies found. Try a different search keyword</p>';
-            $('.ajax_filter_search_results .results').append(html);
-            $('.ajax_filter_search_results').show(); 
-			closeSearchResponse();
-	    }
-	    
-	});
+				closeSearchResponse();
+		    }
+		    
+		});
+	
+	}else{
+		 $('.ajax_filter_search_results h3').html('<h3>Whoops! Please enter a search keyword.</h3>');	
+		 $('.ajax_filter_search_results').show();
+		 closeSearchResponse(); 
+	}
 	
 });
+
+dataLink('.popular_movies .tmdb_post');
 
 function closeSearchResponse(){
 	$('.ajax_filter_search_results .close').click(function(){
@@ -59,7 +80,9 @@ function closeSearchResponse(){
 	});
 }
 
-$('.popular_movies .tmdb_post').click(function(){
-	var url = $(this).attr('data-link');
-	$(window).attr('location',url);
-});
+function dataLink(dl){
+	$(dl).click(function(){
+		var url = $(this).attr('data-link');
+		$(window).attr('location',url);
+	});
+}

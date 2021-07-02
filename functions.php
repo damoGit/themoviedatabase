@@ -6,13 +6,13 @@
 	    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/assets/js/script.js', array('jquery'), wp_get_theme()->get('Version'));
 	});
 	
+	// Add ajax scripts
 	function my_ajax_filter_search_scripts(){
 	    wp_enqueue_script( 'my_ajax_filter_search', get_stylesheet_directory_uri(). '/assets/js/search.js', array(), wp_get_theme()->get('Version'), true );
-	    //wp_add_inline_script( 'my_ajax_filter_search', 'ajax_url', admin_url('admin-ajax.php') );
 	    wp_localize_script( 'my_ajax_filter_search', 'ajax_url', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 	}
 
-	// Register Custom movie Post Type
+	// Register custom movie Post Type
 	function register_custom_post_type_movie(){
 	    $args = array(
 	        "label" => __( "Movies", "" ),
@@ -44,7 +44,7 @@
 	}
 	add_action( 'init', 'register_custom_post_type_movie' );
 	
-	// Creayte AJAX search shortcode 
+	// Creayte ajax search shortcode 
 	function my_ajax_filter_search_shortcode(){
 		my_ajax_filter_search_scripts();
 	    ob_start(); ?>
@@ -61,8 +61,7 @@
 	} 
 	add_shortcode('my_ajax_filter_search', 'my_ajax_filter_search_shortcode');
 	
-	// Ajax Callback
-	
+	// Ajax callback
 	add_action('wp_ajax_my_ajax_filter_search', 'my_ajax_filter_search_callback');
 	add_action('wp_ajax_nopriv_my_ajax_filter_search', 'my_ajax_filter_search_callback');
 	 

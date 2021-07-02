@@ -21,8 +21,16 @@
 								$image = get_field('movie_cover');
 								$date = get_field("movie_year");
 								$date_array = explode(",",$date);
+								$score = get_field('movie_score');
+								if($score <= 30){
+									$score_color = 'red';
+								}else if($score >= 31 && $score <= 60){
+									$score_color = 'purple';	
+								}else if($score >= 61 && $score <= 100){
+									$score_color = 'green';	
+								}
 							?>
-							<span class="score"><?php echo get_field('movie_score').'%';?></span>
+							<span class="score score_<?php echo $score_color;?>"><?php echo get_field('movie_score').'%';?></span>
 					     	<img src="<?php echo esc_url($image['url']);?>"/>
 							<p><?php the_title(); ?> <small><?php echo $date_array[1].' '.$date_array[2];?></small></p>
 						</div>
