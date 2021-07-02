@@ -6,7 +6,7 @@ var mafsForm = mafs.find('form');
 mafsForm.submit(function(e){
     e.preventDefault(); 
     
-    mafs.find('.ajax_filter_search_results').html('');
+    $('.ajax_filter_search_results div').html('');
     
     console.log('form submitted');
  
@@ -24,33 +24,40 @@ mafsForm.submit(function(e){
 	    data : data,
 	    success : function(response) {
 	         if(response) {
-		         console.log(response);
-		         for(var i = 0 ;  i < response.length ; i++) {
-	                 var html  = "<li id='movie-" + response[i].id + "'>";
-	                     html += "  <a href='" + response[i].permalink + "' title='" + response[i].title + "'>";
-	                     html += "      <img src='" + response[i].movie_cover['url'] + "' alt='" + response[i].title + "' />";
-	                     html += "      <div class='movie-info'>";
-	                     html += "          <h4>" + response[i].title + "</h4>";
-	                     html += "          <p>Year: " + response[i].movie_year + "</p>";
-	                     html += "          <p>Score: " + response[i].movie_score + "</p>";
-	                     html += "      </div>";
-	                     html += "  </a>";
-	                     html += "</li>";
-	                 mafs.find(".ajax_filter_search_results").append(html);
+		      	//$('.ajax_filter_search_results h3').append('<h3>Search Results</h3>');
+		        for(var i = 0 ;  i < response.length ; i++) {
+	                var	html  = '<div class="tmdb_post" data-link="' + response[i].permalink + '">';
+	                 	html += '	<span class="score">' + response[i].movie_score + '</span>';
+	                    html += '	<img src="' + response[i].movie_cover['url'] + '" alt="' + response[i].title + '" />';
+	                    html += '	<p>' + response[i].title + '<small>' + response[i].movie_year + '</small></p>';
+	                    html += '<div>';
+	                $('.ajax_filter_search_results .results').append(html);
 	            }
+	            $('.ajax_filter_search_results').show();
+	            closeSearchResponse();
 		     }else{
-				var html  = '<li class="no-result">No matching movies found. Try a different filter or search keyword</li>';
-	            mafs.find('.ajax_filter_search_results').append(html);     
+				var html = '<p class="no-result">No matching movies found. Try a different search keyword</p>';
+	            $('.ajax_filter_search_results .results').append(html);
+	            $('.ajax_filter_search_results').show(); 
+	            closeSearchResponse();    
 		     }
 	    },
 	    error: function(xhr){
-	      var html  = '<li class="no-result">No matching movies found. Try a different filter or search keyword</li>';
-		  mafs.find('.ajax_filter_search_results').append(html);
+			var html = '<p class="no-result">No matching movies found. Try a different search keyword</p>';
+            $('.ajax_filter_search_results .results').append(html);
+            $('.ajax_filter_search_results').show(); 
+			closeSearchResponse();
 	    }
 	    
 	});
 	
 });
+
+function closeSearchResponse(){
+	$('.ajax_filter_search_results .close').click(function(){
+		$(".ajax_filter_search_results").fadeOut('fast');	
+	});
+}
 
 $('.popular_movies .tmdb_post').click(function(){
 	var url = $(this).attr('data-link');

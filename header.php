@@ -9,6 +9,13 @@
 
 <body <?php body_class(); ?>>
 
+<div id="ajax_filter_search_results" class="ajax_filter_search_results" style="display:none;">
+	<span class="close"></span>
+	<h3>Search Results</h3>
+	<div class="results">
+		Loading Results...
+	</div>
+</div>
 <div class="tmdb_wrapper">
 	
 	<header class="tmdb_header">

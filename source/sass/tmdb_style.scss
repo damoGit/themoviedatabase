@@ -5,7 +5,13 @@
 /* Theme Colours */
 /* ========================================================================== */
 
-$tmdb_maxwidth: 1000px;
+//$tmdb_maxwidth: 1050px;
+$tmdb_maxwidth: 700px;
+
+$tmdb_phonebreak: 652px;
+$tmdb_tabletbreak: 768px;
+$tmdb_laptopbreak: 992px;
+$tmdb_desktopbreak: $tmdb_maxwidth;
 
 $tmdb_colourdarkblue: #081B23;
 $tmdb_colourgreen: #01D277;
@@ -31,8 +37,16 @@ $tmdb_fontheadings: 'Montserrat', sans-serif;
 	background-color: $from;
 }
 
-/* Theme Layout */
-/* ========================================================================== */
+// Extra small devices (phones, 600px and down)
+@media only screen and (max-width: $tmdb_phonebreak){}
+// Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: $tmdb_phonebreak){}
+// Medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: $tmdb_tabletbreak){}
+// Large devices (laptops/desktops, 992px and up)
+@media only screen and (min-width: $tmdb_laptopbreak){}
+// Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (min-width: $tmdb_desktopbreak){}
 
 /* apply a natural box layout model to all elements, but allowing components to change */
 html{
@@ -49,14 +63,15 @@ body{
 	background: $tmdb_colourdarkblue url("../images/Rectangle.png") 50% 0 no-repeat;
 }
 
+/* Theme Layout */
+/* ========================================================================== */
+
 .tmdb_wrapper{
 	width: 100%;
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	//text-align: center;
 	overflow: hidden;
 	
 	header,
@@ -72,17 +87,11 @@ body{
 		
 	}
 	
-	.tmdb_header{
-		
-	}
+	.tmdb_header{}
 	
-	.tmdb_container{
-		flex-grow: 1;		
-	}
+	.tmdb_container{}
 	
-	.tmdb_footer{
-		
-	}
+	.tmdb_footer{}
 		
 }
 
@@ -125,7 +134,7 @@ h2{
 	
 	.my-ajax-filter-search{
 		width: 342px;
-		max-width: 100%;
+		max-width: 90%;
 		margin: 0 auto;
 		position: relative;
 		z-index: 1;
@@ -179,24 +188,83 @@ h2{
 	
 }
 
+.ajax_filter_search_results{
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	background: rgba(8, 27, 35, .95);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	.close{
+		width: 25px;
+		height: 25px;
+		display: block;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		z-index: 100;
+		cursor: pointer;
+		background: #fff;
+	}
+	
+	.results{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	
+	.tmdb_post{
+		@extend .movie_preview;
+		margin: 5px 10px!important;
+	}
+	
+}
+
+
 /* Container */
 /* ========================================================================== */
 
 .tmdb_container{	
-	padding: 0 16px;	
+	padding: 0 15px;
 }
 
 /* Popular Movies */
 /* ========================================================================== */
 
 .popular_movies{
+	width: 375px;
+	max-width: 100%;
+	margin: 0 auto;
 	cursor: pointer;
+	
+	@media only screen and (min-width: $tmdb_phonebreak){
+		width: $tmdb_phonebreak/1.3;
+	}
+	
+	@media only screen and (min-width: $tmdb_tabletbreak){
+		width: $tmdb_tabletbreak/1.1;
+	}
 	
 	>div{
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: space-around;
+		justify-content: space-between;
+		
+		@media only screen and (min-width: $tmdb_phonebreak){
+			justify-content: center;	
+		}
+
+
+		@media only screen and (min-width: $tmdb_tabletbreak){
+			justify-content: space-between;	
+		}
 	
 		.tmdb_post{
 			@extend .movie_preview;
@@ -215,7 +283,7 @@ h2{
 
 .movie_preview{
 	width: 155px;
-	margin: 5px 10px;
+	margin: 5px 5px;
 	position: relative;	
 	
 	.score{

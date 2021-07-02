@@ -54,7 +54,6 @@
 		            <input type="text" name="search" id="search" value="" placeholder="Search">
 		            <input type="submit" id="submit" name="submit" value="">
 		        </form>
-		        <ul id="ajax_filter_search_results" class="ajax_filter_search_results"></ul>
 		    </div>
 	     
 	    <?php
