@@ -450,9 +450,6 @@ h2 {
 
 /* Container */
 /* ========================================================================== */
-.tmdb_container {
-  padding: 0 15px; }
-
 /* Popular Movies */
 /* ========================================================================== */
 .popular_movies {
@@ -477,6 +474,18 @@ h2 {
     @media only screen and (min-width: 768px) {
       .popular_movies > div {
         justify-content: space-between; } }
+
+.review .tmdb_post .review_header {
+  position: relative; }
+  .review .tmdb_post .review_header .image_poster {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .review .tmdb_post .review_header > div {
+    position: relative;
+    z-index: 1; }
 
 /* Footer */
 /* ========================================================================== */

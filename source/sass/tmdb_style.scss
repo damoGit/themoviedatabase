@@ -243,7 +243,7 @@ h2{
 /* ========================================================================== */
 
 .tmdb_container{	
-	padding: 0 15px;
+	//padding: 0 15px;
 }
 
 /* Popular Movies */
@@ -282,6 +282,32 @@ h2{
 			@extend .movie_preview;
 		}
 	
+	}
+	
+}
+
+.review{
+	
+	.tmdb_post{
+				
+		.review_header{
+			position: relative;
+
+			.image_poster{
+				width: 100%;
+				height: auto;
+				position: absolute;
+				top:0;
+				left: 0;	
+			}
+			
+			>div{
+				position: relative;
+				z-index: 1;
+			}
+			
+		}
+		
 	}
 	
 }

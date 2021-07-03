@@ -48,8 +48,6 @@
 					<rect x="31" y="114.551" width="162" height="4" rx="2" transform="rotate(-45 31 114.551)" fill="#01D277" fill-opacity="0.83"/>
 				</svg>
 				<?php echo do_shortcode('[my_ajax_filter_search]'); ?> 
-			<?php else:?>
-				<a href="<?php echo home_url();?>"><<</a>
 			<?php endif;?>
 		</div>
 	</header><!-- tmdb_header -->
