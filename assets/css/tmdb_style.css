@@ -387,12 +387,45 @@ hr {
   position: relative; }
   .tmdb_header .logo {
     margin: 60px auto;
-    display: block; }
+    opacity: 0;
+    display: block;
+    /*
+		.the{
+			
+			path{
+				fill: orange;
+			}
+			
+		}
+		
+		.movie{
+			
+			path,
+			rect{
+				fill: orange;
+			}
+			
+		}
+		
+		.db{
+			
+			path,
+			rect{
+				fill: orange;
+			}
+			
+		}
+		
+		.outer{
+			fill: pink;
+		}
+*/ }
   .tmdb_header .lines {
     position: absolute;
     top: -100px;
     left: 50%;
-    margin-left: -202.5px; }
+    margin-left: -202.5px;
+    opacity: 0; }
   .tmdb_header .my-ajax-filter-search {
     width: 342px;
     max-width: 90%;
@@ -436,6 +469,8 @@ hr {
       border-radius: 22px;
       background: transparent url("../images/search.png") 50% 50% no-repeat;
       background-size: 16px; }
+      .tmdb_header .my-ajax-filter-search input[type=submit]:focus {
+        outline: none; }
 
 /* Ajax Search */
 /* ========================================================================== */
@@ -446,16 +481,18 @@ hr {
   top: 0;
   left: 0;
   z-index: 99;
-  background: rgba(8, 27, 35, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden; }
-  .ajax_filter_search_results h2,
-  .ajax_filter_search_results p {
+  overflow: hidden;
+  transform: scale(0);
+  opacity: 0; }
+  .ajax_filter_search_results h2 {
     text-align: center;
     margin: 0 0; }
+  .ajax_filter_search_results p {
+    margin: 10px 0; }
   .ajax_filter_search_results .close {
     width: 25px;
     height: 25px;
@@ -473,6 +510,14 @@ hr {
     justify-content: center; }
   .ajax_filter_search_results .tmdb_post {
     margin: 5px 10px !important; }
+  .ajax_filter_search_results .bg {
+    width: 100%;
+    height: 100vh;
+    background: rgba(8, 27, 35, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; }
 
 /* Container */
 /* ========================================================================== */

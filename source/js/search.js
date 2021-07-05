@@ -1,13 +1,16 @@
 $ = jQuery;
+
+var searchForm = $('.my-ajax-filter-search'),
+	searchResultOverlay = $('.ajax_filter_search_results'),
+	searchResultsH2 = $('.ajax_filter_search_results h2'),
+	searchResultMsg = $('.ajax_filter_search_results .result_message');
+	searchResult = $('.ajax_filter_search_results .results');
  
-var mafs = $('#my-ajax-filter-search'); 
-var mafsForm = mafs.find('form'); 
- 
-mafsForm.submit(function(e){
+$(searchForm).submit(function(e){
     e.preventDefault(); 
     
     // Empty any previous search results
-    $('.ajax_filter_search_results div').html('');
+    searchResult.html('');
  
 	if($('#search').val().length !== 0){
 	    var search = $('#search').val();
@@ -22,7 +25,7 @@ mafsForm.submit(function(e){
 	if(search){
 		
 		// Reset h2 default if altered in previous search
-		$('.ajax_filter_search_results h2').html('Search Results');
+		searchResultsH2.html('Search Results');
 		
 		// Start Ajax call
 		$.ajax({
@@ -36,7 +39,7 @@ mafsForm.submit(function(e){
 			        }else{
 				    	 var result = response.length + ' results for ' +  search;    
 			        }
-			        $('.ajax_filter_search_results .result_message').html('')
+			        searchResultMsg.html('')
 			        	.append(result);
 			        
 			        // Loop results
@@ -59,35 +62,33 @@ mafsForm.submit(function(e){
 		                    html += '	<img src="' + response[i].movie_cover['url'] + '" alt="' + response[i].title + '" />';
 		                    html += '	<p>' + response[i].title + '<small>' + response[i].movie_year + '</small></p>';
 		                    html += '<div>';
-		                $('.ajax_filter_search_results .results').append(html);
+		                searchResult.append(html);
 		                
 		            }
 		            
-		           	// Show results 
-				   	openSearchResponse();
 		            // Ceate clickable link from data attribute of results
 		            dataLink('.ajax_filter_search_results .tmdb_post');
-		            
+					// Open search result overlay
+					openSearchResponse();
+					
 		        }else{
 			        
 					// Format and return html result
 					var html = 'Server Error. Please try again later';
-		            $('.ajax_filter_search_results .result_message').html('')
+		            searchResult.html('')
 		            	.append(html);
-		            // Show results 
+		            // Open search result overlay
 					openSearchResponse();
- 
 			     }
 		    },
 		    error: function(xhr){
 				
 				// Format and return html result
 				var html = '0 results for ' +  search;
-	            $('.ajax_filter_search_results .result_message').html('')
+	            searchResultMsg.html('')
 	            	.append(html);
-	            // Show results 
+	            // Open search result overlay
 				openSearchResponse();
-	            
 		    }
   
 		});
@@ -96,38 +97,33 @@ mafsForm.submit(function(e){
 	}else{
 		
 		// Format and return html result
-		$('.ajax_filter_search_results h2').html('Whoops!');
+		searchResultsH2.html('Whoops!');
 		var html = 'Please enter a movie title';
-		$('.ajax_filter_search_results .result_message').append(html);	
-		// Show results 
+		searchResultMsg.html('')
+			.append(html);	
+		// Open search result overlay
 		openSearchResponse();
 	}
 	
-	// Close search result overlay
-	//closeSearchResponse();
-	
 });
 
-function openSearchResponse(){	
-	$(".ajax_filter_search_results").show();
-	var searchResults = $(".ajax_filter_search_results"),
-		tlOpenSearch = new TimelineMax({});	
-	tlOpenSearch.from(searchResults,0.2,{scale: 0, ease:Sine.easeOut});
-}
-
+// Close search result overlay
 closeSearchResponse();
 
+function openSearchResponse(){
+	var searchResults = $(".ajax_filter_search_results"),
+		tlOpenSearch = new TimelineMax({});	
+	tlOpenSearch
+		.to(searchResults,0.2,{scale: 1, opacity:1, ease:Sine.easeIn});
+}
+
 function closeSearchResponse(){
+// 	$('.ajax_filter_search_results .close, .ajax_filter_search_results .bg').click(function(){
 	$('.ajax_filter_search_results .close').click(function(){	
 		var searchResults = $(".ajax_filter_search_results"),
 			tlCloseSearch = new TimelineMax({});		
-		tlCloseSearch.to(searchResults,0.2,{scale: 0, ease:Sine.easeIn});
-	});	
-	$(".ajax_filter_search_results").hide();
-/*
-	$('.ajax_filter_search_results .close').click(function(){
-		
-		//$(".ajax_filter_search_results").fadeOut('fast');	
+		tlCloseSearch
+			.to(searchResults,0.2,{scale: 0, opacity:0, ease:Sine.easeIn});
 	});
-*/
 }
+

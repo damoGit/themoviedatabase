@@ -164,7 +164,42 @@ hr{
 	
 	.logo{
 		margin: 60px auto;
-		display: block;	
+		opacity: 0;
+		display: block;
+		
+		
+/*
+		.the{
+			
+			path{
+				fill: orange;
+			}
+			
+		}
+		
+		.movie{
+			
+			path,
+			rect{
+				fill: orange;
+			}
+			
+		}
+		
+		.db{
+			
+			path,
+			rect{
+				fill: orange;
+			}
+			
+		}
+		
+		.outer{
+			fill: pink;
+		}
+*/
+			
 	}
 	
 	$lines_width: 405px;
@@ -173,6 +208,7 @@ hr{
 		top: -100px;
 		left: 50%;
 		margin-left: -$lines_width/2;
+		opacity: 0;
 	}
 	
 	.my-ajax-filter-search{
@@ -216,6 +252,11 @@ hr{
 			border-radius: 22px;	
 			background: transparent url("../images/search.png") 50% 50% no-repeat;
 			background-size: 16px;
+			
+			&:focus{
+				outline: none;
+			}
+			
 		}
 		
 	}
@@ -232,17 +273,21 @@ hr{
 	top: 0;
 	left: 0;
 	z-index: 99;
-	background: rgba(8, 27, 35, .95);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
+	transform: scale(0);
+	opacity: 0;
 	
-	h2,
-	p{
+	h2{
 		text-align: center;
 		margin: 0 0;
+	}
+	
+	p{
+		margin: 10px 0;
 	}
 	
 	.close{
@@ -267,6 +312,16 @@ hr{
 	.tmdb_post{
 		@extend .movie_item;
 		margin: 5px 10px!important;
+	}
+	
+	.bg{
+		width: 100%;
+		height: 100vh;
+		background: rgba(8, 27, 35, .9);
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
 	}
 	
 }
