@@ -16,10 +16,9 @@
 			<path d="M4 5L6 3L20 20L18 22L4 5Z" fill="white"/>
 		</svg>
 	</span>
-	<h3>Search Results</h3>
-	<div class="results">
-		Loading Results...
-	</div>
+	<h2>Search Results</h2>
+	<p class="result_message"></p>
+	<div class="results"></div>
 </div>
 <div class="tmdb_wrapper">
 	

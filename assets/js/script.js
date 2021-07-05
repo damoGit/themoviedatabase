@@ -1,1 +1,1 @@
-jQuery.noConflict(),jQuery((function(){}));
+function dataLink(t){$(t).click((function(){var t=$(this).attr("data-link");$(window).attr("location",t)}))}jQuery.noConflict(),jQuery((function(){dataLink(".popular_movies .tmdb_post")}));

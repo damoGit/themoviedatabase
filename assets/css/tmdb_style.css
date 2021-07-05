@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -344,16 +344,41 @@ body {
 
 /* Typography */
 /* ========================================================================== */
+html {
+  font-size: 62.5%;
+  /* Sets up the Base 10 stuff */ }
+
 body {
   font-family: "Roboto", sans-serif;
-  color: #A1D1E5; }
+  color: #9FBBC7; }
 
 h1, h2, h3, h4 {
   font-family: "Montserrat", sans-serif;
-  color: #E3F4FC; }
+  color: #E3F4FC;
+  font-weight: 600; }
+
+h1 {
+  font-size: 28px;
+  font-size: 2.8rem; }
 
 h2 {
-  font-size: 20px; }
+  font-size: 20px;
+  font-size: 2rem; }
+
+p {
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5em; }
+
+hr {
+  border: none;
+  border-top: solid 1px #0F303D; }
+
+h2,
+p,
+hr {
+  margin: 1em 0; }
 
 /* Header */
 /* ========================================================================== */
@@ -427,16 +452,17 @@ h2 {
   align-items: center;
   justify-content: center;
   overflow: hidden; }
-  .ajax_filter_search_results h3 {
+  .ajax_filter_search_results h2,
+  .ajax_filter_search_results p {
     text-align: center;
-    margin: 20px 20px; }
+    margin: 0 0; }
   .ajax_filter_search_results .close {
     width: 25px;
     height: 25px;
     display: block;
     position: absolute;
     top: 20px;
-    right: 20px;
+    left: 20px;
     z-index: 100;
     cursor: pointer; }
   .ajax_filter_search_results .results {
@@ -450,16 +476,17 @@ h2 {
 
 /* Container */
 /* ========================================================================== */
-/* Popular Movies */
+/* Popular Movies Page */
 /* ========================================================================== */
 .popular_movies {
   width: 375px;
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
   cursor: pointer; }
   @media only screen and (min-width: 652px) {
     .popular_movies {
-      width: 501.53846px; } }
+      width: 543.33333px; } }
   @media only screen and (min-width: 768px) {
     .popular_movies {
       width: 698.18182px; } }
@@ -470,35 +497,62 @@ h2 {
     justify-content: space-between; }
     @media only screen and (min-width: 652px) {
       .popular_movies > div {
-        justify-content: center; } }
+        justify-content: space-around; } }
     @media only screen and (min-width: 768px) {
       .popular_movies > div {
         justify-content: space-between; } }
 
-.review .tmdb_post .review_header {
+/* Review Page */
+/* ========================================================================== */
+.review {
   position: relative; }
-  .review .tmdb_post .review_header .image_poster {
-    width: 100%;
-    height: auto;
+  .review .back {
     position: absolute;
-    top: 0;
-    left: 0; }
-  .review .tmdb_post .review_header > div {
-    position: relative;
-    z-index: 1; }
+    top: 40px;
+    left: 20px;
+    z-index: 100;
+    cursor: pointer; }
+  .review .tmdb_post .review_header {
+    position: relative; }
+    .review .tmdb_post .review_header .image_poster {
+      width: 100%;
+      height: auto;
+      position: relative;
+      top: 0;
+      left: 0; }
+    .review .tmdb_post .review_header > div {
+      padding: 0 15px 10px 15px;
+      position: relative;
+      top: -90px;
+      margin-bottom: -90px;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start; }
+      .review .tmdb_post .review_header > div > div {
+        padding: 88px 0 0 10px; }
+        .review .tmdb_post .review_header > div > div p {
+          font-size: 12px;
+          font-size: 1.2rem;
+          line-height: 1.5em; }
+  .review .tmdb_post .review_content {
+    padding: 0 15px; }
+    .review .tmdb_post .review_content p {
+      color: #9FBBC7; }
 
 /* Footer */
 /* ========================================================================== */
 /* Helper Classes */
 /* ========================================================================== */
-.movie_preview, .ajax_filter_search_results .tmdb_post, .popular_movies > div .tmdb_post {
+.movie_item, .ajax_filter_search_results .tmdb_post, .popular_movies > div .tmdb_post {
   width: 155px;
   margin: 5px 5px;
   position: relative;
-  cursor: pointer; }
-  .movie_preview:hover img, .ajax_filter_search_results .tmdb_post:hover img, .popular_movies > div .tmdb_post:hover img {
+  cursor: pointer;
+  color: #E5F7FF; }
+  .movie_item:hover img, .ajax_filter_search_results .tmdb_post:hover img, .popular_movies > div .tmdb_post:hover img {
     opacity: .5; }
-  .movie_preview .score, .ajax_filter_search_results .tmdb_post .score, .popular_movies > div .tmdb_post .score {
+  .movie_item .score, .ajax_filter_search_results .tmdb_post .score, .popular_movies > div .tmdb_post .score {
     width: 40px;
     padding: 4px 0 3px 0;
     display: block;
@@ -512,21 +566,22 @@ h2 {
     color: #fff;
     border-radius: 8px;
     background: #01D277; }
-    .movie_preview .score.score_red, .ajax_filter_search_results .tmdb_post .score.score_red, .popular_movies > div .tmdb_post .score.score_red {
+    .movie_item .score.score_red, .ajax_filter_search_results .tmdb_post .score.score_red, .popular_movies > div .tmdb_post .score.score_red {
       background: #D1225B; }
-    .movie_preview .score.score_purple, .ajax_filter_search_results .tmdb_post .score.score_purple, .popular_movies > div .tmdb_post .score.score_purple {
+    .movie_item .score.score_purple, .ajax_filter_search_results .tmdb_post .score.score_purple, .popular_movies > div .tmdb_post .score.score_purple {
       background: #4902A3; }
-  .movie_preview img, .ajax_filter_search_results .tmdb_post img, .popular_movies > div .tmdb_post img {
+  .movie_item img, .ajax_filter_search_results .tmdb_post img, .popular_movies > div .tmdb_post img {
     position: relative;
     top: -5px;
     left: -9px; }
-  .movie_preview p, .ajax_filter_search_results .tmdb_post p, .popular_movies > div .tmdb_post p {
-    margin: 0 0;
+  .movie_item p, .ajax_filter_search_results .tmdb_post p, .popular_movies > div .tmdb_post p {
     font-size: 14px;
+    font-size: 1.4rem;
+    margin: 0 0;
     text-align: left;
-    color: #E5F7FF; }
-    .movie_preview p small, .ajax_filter_search_results .tmdb_post p small, .popular_movies > div .tmdb_post p small {
-      padding-top: 5px;
+    color: inherit; }
+    .movie_item p small, .ajax_filter_search_results .tmdb_post p small, .popular_movies > div .tmdb_post p small {
       font-size: 12px;
+      font-size: 1.2rem;
       color: #A1D1E5;
       display: block; }

@@ -51,20 +51,23 @@
 							$date = get_field("movie_year");
 							$date_array = explode(",",$date);
 							$score = get_field("movie_score");
+							$time = get_field("movie_time");
 						?>
 						<div class="review_header">
 							<img src="<?php echo esc_url($image_poster["url"]);?>" class="image_poster"/>
 							<div>
-								<img src="<?php echo esc_url($image_cover["url"]);?>"/>
+								<img src="<?php echo esc_url($image_cover["url"]);?>" width="155" height="233"/>
 								<div>
-									<h2><?php the_title();?></h2>
-									<p><?php echo $date_array[2]." - ".$score."/100" ;?></p>
+									<h1><?php the_title();?></h1>
+									<p><?php echo $date_array[2]." - ".$score."/100" ;?><br><?php echo $time;?></p>
 								</div>
 							</div>
 						</div><!-- review_header -->
-						<hr>
-						<h3>Review</h3>
-						<p><?php the_content();?></p>
+						<div class="review_content">
+							<hr>
+							<h2>Review</h2>
+							<p><?php the_content();?></p>
+						</div><!-- .review_content -->
 					</div><!-- .tmdb_post -->
 				</div> <!-- .review -->
 			<?php endwhile; else: ?>

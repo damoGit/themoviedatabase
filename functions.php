@@ -1,12 +1,16 @@
 <?php
 	
-	// Add theme scripts	
+	// Enqueue theme scripts	
 	add_action( 'wp_enqueue_scripts', function() {
-	    wp_enqueue_style( 'style' , get_stylesheet_directory_uri() . '/assets/css/tmdb_style.css', array(), wp_get_theme()->get('Version'));
-	    wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/assets/js/script.js', array('jquery'), wp_get_theme()->get('Version'));
+	    wp_enqueue_style( 'style' , get_template_directory_uri() . '/assets/css/tmdb_style.css', array(), wp_get_theme()->get('Version'));
+	    
+	    wp_enqueue_script( 'tween_max', get_template_directory_uri() . '/assets/js/libs/TweenMax.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+	    wp_enqueue_script( 'timeline_Max', get_template_directory_uri() . '/assets/js/libs/TimelineMax.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+	    
+	    wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), wp_get_theme()->get('Version'), true);
 	});
 	
-	// Add ajax scripts
+	// Enqueue ajax scripts
 	function my_ajax_filter_search_scripts(){
 	    wp_enqueue_script( 'my_ajax_filter_search', get_stylesheet_directory_uri(). '/assets/js/search.js', array(), wp_get_theme()->get('Version'), true );
 	    wp_localize_script( 'my_ajax_filter_search', 'ajax_url', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
