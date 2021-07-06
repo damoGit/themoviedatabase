@@ -341,6 +341,7 @@ hr{
 	margin: 0 auto;
 	padding: 0 15px;
 	cursor: pointer;
+	position: relative;
 	
 	@media only screen and (min-width: $tmdb_phonebreak){
 		width: $tmdb_phonebreak/1.2;
@@ -349,6 +350,7 @@ hr{
 	@media only screen and (min-width: $tmdb_tabletbreak){
 		width: $tmdb_tabletbreak/1.1;
 	}
+	
 	
 	>div{
 		display: flex;
@@ -377,6 +379,7 @@ hr{
 /* ========================================================================== */
 
 .review{
+	overflow: hidden;
 	position: relative;
 	
 	.back{
@@ -388,6 +391,7 @@ hr{
 	}
 	
 	.tmdb_post{
+		position: relative;	
 				
 		.review_header{
 			position: relative;
@@ -397,7 +401,8 @@ hr{
 				height: auto;
 				position: relative;
 				top:0;
-				left: 0;	
+				left: 0;
+				animation: animation_poster .5s ease-out;
 			}
 			
 			>div{
@@ -506,4 +511,62 @@ hr{
 		}
 		
 	}
+}
+
+/* Animations */
+/* ========================================================================== */
+
+@keyframes animation_leftin{
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+	    right: 1000px;
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+	    right: 0;
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes animation_rightin{
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+	    left: 1000px;
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+	    left: 0;
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes animation_poster{
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
 }

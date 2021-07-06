@@ -38,6 +38,14 @@
 				</div>
 		<?php else:?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<?php
+					$image_cover = get_field("movie_cover");
+					$image_poster = get_field("movie_poster");
+					$date = get_field("movie_year");
+					$date_array = explode(",",$date);
+					$score = get_field("movie_score");
+					$time = get_field("movie_time");
+				?>
 				<div class="review">
 					<a href="<?php echo home_url();?>">
 						<svg width="22" height="28" class="back" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,14 +53,6 @@
 						</svg>
 					</a>
 					<div class="tmdb_post tmdb_post_review">
-						<?php
-							$image_cover = get_field("movie_cover");
-							$image_poster = get_field("movie_poster");
-							$date = get_field("movie_year");
-							$date_array = explode(",",$date);
-							$score = get_field("movie_score");
-							$time = get_field("movie_time");
-						?>
 						<div class="review_header">
 							<img src="<?php echo esc_url($image_poster["url"]);?>" class="image_poster"/>
 							<div>

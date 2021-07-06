@@ -528,7 +528,8 @@ hr {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 15px;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
   @media only screen and (min-width: 652px) {
     .popular_movies {
       width: 543.33333px; } }
@@ -550,6 +551,7 @@ hr {
 /* Review Page */
 /* ========================================================================== */
 .review {
+  overflow: hidden;
   position: relative; }
   .review .back {
     position: absolute;
@@ -557,33 +559,36 @@ hr {
     left: 20px;
     z-index: 100;
     cursor: pointer; }
-  .review .tmdb_post .review_header {
+  .review .tmdb_post {
     position: relative; }
-    .review .tmdb_post .review_header .image_poster {
-      width: 100%;
-      height: auto;
-      position: relative;
-      top: 0;
-      left: 0; }
-    .review .tmdb_post .review_header > div {
-      padding: 0 15px 10px 15px;
-      position: relative;
-      top: -90px;
-      margin-bottom: -90px;
-      z-index: 1;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start; }
-      .review .tmdb_post .review_header > div > div {
-        padding: 88px 0 0 10px; }
-        .review .tmdb_post .review_header > div > div p {
-          font-size: 12px;
-          font-size: 1.2rem;
-          line-height: 1.5em; }
-  .review .tmdb_post .review_content {
-    padding: 0 15px; }
-    .review .tmdb_post .review_content p {
-      color: #9FBBC7; }
+    .review .tmdb_post .review_header {
+      position: relative; }
+      .review .tmdb_post .review_header .image_poster {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        animation: animation_poster .5s ease-out; }
+      .review .tmdb_post .review_header > div {
+        padding: 0 15px 10px 15px;
+        position: relative;
+        top: -90px;
+        margin-bottom: -90px;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start; }
+        .review .tmdb_post .review_header > div > div {
+          padding: 88px 0 0 10px; }
+          .review .tmdb_post .review_header > div > div p {
+            font-size: 12px;
+            font-size: 1.2rem;
+            line-height: 1.5em; }
+    .review .tmdb_post .review_content {
+      padding: 0 15px; }
+      .review .tmdb_post .review_content p {
+        color: #9FBBC7; }
 
 /* Footer */
 /* ========================================================================== */
@@ -630,3 +635,42 @@ hr {
       font-size: 1.2rem;
       color: #A1D1E5;
       display: block; }
+
+/* Animations */
+/* ========================================================================== */
+@keyframes animation_leftin {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    right: 1000px;
+    display: block;
+    opacity: 0; }
+  100% {
+    right: 0;
+    display: block;
+    opacity: 1; } }
+
+@keyframes animation_rightin {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    left: 1000px;
+    display: block;
+    opacity: 0; }
+  100% {
+    left: 0;
+    display: block;
+    opacity: 1; } }
+
+@keyframes animation_poster {
+  0% {
+    display: none;
+    opacity: 0; }
+  1% {
+    display: block;
+    opacity: 0; }
+  100% {
+    display: block;
+    opacity: 1; } }
