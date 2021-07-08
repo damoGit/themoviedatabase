@@ -424,8 +424,7 @@ hr {
     position: absolute;
     top: -100px;
     left: 50%;
-    margin-left: -202.5px;
-    opacity: 0; }
+    margin-left: -202.5px; }
   .tmdb_header .my-ajax-filter-search {
     width: 342px;
     max-width: 90%;
