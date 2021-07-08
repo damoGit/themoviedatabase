@@ -16,7 +16,7 @@ Gulp used to process CSS, JS and run dev environment with live browser refresh.
 ```
 function browsersyncServe(cb){
   browsersync.init({
-	  proxy: 'https://themoviedatabase/'  
+	  proxy: 'https://yourlocalhost/'  
   });
   cb();
 }
