@@ -15,4 +15,13 @@ Gulp used to process CSS, JS and run dev environment with live browser refresh.
 
 • Run `gulp` to open dev environment in default browser
 
+```
+function browsersyncServe(cb){
+  browsersync.init({
+	  proxy: 'https://themoviedatabase/'  
+  });
+  cb();
+}
+```
+
 • Edit SASS and Javascript files in the source directory. The files are compiled to their respective directories in the assets folder ready for production
