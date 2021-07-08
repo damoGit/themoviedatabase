@@ -529,10 +529,12 @@ hr {
   margin: 0 auto;
   padding: 0 15px;
   cursor: pointer;
-  position: relative; }
+  position: relative;
+  animation: animation_leftin .5s ease-out; }
   @media only screen and (min-width: 652px) {
     .popular_movies {
-      width: 543.33333px; } }
+      width: 543.33333px;
+      animation: none; } }
   @media only screen and (min-width: 768px) {
     .popular_movies {
       width: 698.18182px; } }
@@ -552,7 +554,11 @@ hr {
 /* ========================================================================== */
 .review {
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  animation: animation_rightin .5s ease-out; }
+  @media only screen and (min-width: 652px) {
+    .review {
+      animation: none; } }
   .review .back {
     position: absolute;
     top: 40px;
@@ -623,7 +629,8 @@ hr {
   .movie_item img, .ajax_filter_search_results .tmdb_post img, .popular_movies > div .tmdb_post img {
     position: relative;
     top: -5px;
-    left: -9px; }
+    left: -9px;
+    animation: animation_poster .5s ease-out; }
   .movie_item p, .ajax_filter_search_results .tmdb_post p, .popular_movies > div .tmdb_post p {
     font-size: 14px;
     font-size: 1.4rem;

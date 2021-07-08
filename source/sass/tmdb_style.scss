@@ -342,9 +342,11 @@ hr{
 	padding: 0 15px;
 	cursor: pointer;
 	position: relative;
+	animation: animation_leftin .5s ease-out;
 	
 	@media only screen and (min-width: $tmdb_phonebreak){
 		width: $tmdb_phonebreak/1.2;
+		animation: none;
 	}
 	
 	@media only screen and (min-width: $tmdb_tabletbreak){
@@ -381,6 +383,11 @@ hr{
 .review{
 	overflow: hidden;
 	position: relative;
+	animation: animation_rightin .5s ease-out;
+	
+	@media only screen and (min-width: $tmdb_phonebreak){
+		animation: none;
+	}
 	
 	.back{
 		position: absolute;
@@ -496,6 +503,7 @@ hr{
 		position: relative;
 		top: -5px;
 		left: -9px;
+		animation: animation_poster .5s ease-out;
 	}
 	
 	p{
