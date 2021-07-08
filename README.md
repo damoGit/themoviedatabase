@@ -13,8 +13,6 @@ Gulp used to process CSS, JS and run dev environment with live browser refresh.
 
 • Update gulpfile.js browsersyncServe proxy to point to your localhost
 
-• Run `gulp` to open dev environment in default browser
-
 ```
 function browsersyncServe(cb){
   browsersync.init({
@@ -23,5 +21,7 @@ function browsersyncServe(cb){
   cb();
 }
 ```
+
+• Run `gulp` to open dev environment in default browser
 
 • Edit SASS and Javascript files in the source directory. The files are compiled to their respective directories in the assets folder ready for production
